@@ -1,0 +1,24 @@
+:root{
+    --main-bg_color: #7B68EE;
+}
+
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+.container_cols{
+   height: 500px;
+}
+
+.header_container{
+    background-color: var(--main-bg_color);
+}
+.btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+.signup_rows.container{
+    margin: 5em auto;
+}
