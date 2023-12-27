@@ -22,3 +22,11 @@
 .signup_rows.container{
     margin: 5em auto;
 }
+.form_cols{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 2em;
+}
+.form_container{
+    margin-left: auto;
+}
