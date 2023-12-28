@@ -10,7 +10,7 @@
                           </div>
 
                          <div class="login">
-                            <form>
+                            <form method="post">
                                  <div class="login_form_container d-flex flex-column justify-content-center">
                                       <div class="email_username">
                                          <label>Email or username</label><br>
@@ -23,7 +23,7 @@
                                       </div>
 
                                       <div class="forget_password mt-4 d-flex align-items-center justify-content-between">
-                                         <label class="text-danger">Forget Password ? </label> <a href="signup.php" class="text-decoration-none">Sign up</a>
+                                         <a href="forget.php" class="text-danger text-decoration-none">Forget Password ? </a> <a href="signup.php" class="text-decoration-none">Sign up</a>
                                       </div>
 
                                       <div class="login_button mt-4">
