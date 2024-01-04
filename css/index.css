@@ -31,3 +31,17 @@
 .form_container{
     margin-left: auto;
 }
+
+.title_searchbar{
+    column-gap: 1em;
+}
+.title_searchbar input{
+    background-color: #F4F4F4;
+    outline: none;
+}
+.siderbar_cols{
+    background-color: #212B36;
+}
+.siderbar_cols .side ul li a{
+    cursor: pointer;
+}
