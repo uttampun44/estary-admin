@@ -13,7 +13,7 @@
            <div class="container">
                 <div class="container">
                       <div class="header_row d-flex justify-content-between align-items-center py-4">
-                           <div class="title_searchbar d-flex align-items-center">
+                           <div class="title_searchbar d-flex align-items-center ">
                               <h1 class="text-white fst-4 font-weight-bold">Estary Admin</h1>
                               <input name="search"  placeholder="Search Here" class="py-2 rounded px-2"/>
                            </div>
