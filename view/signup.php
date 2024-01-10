@@ -1,6 +1,6 @@
 <?php include_once('../inc/header.php'); ?>
 
-<?php require('../model/database.php'); ?>
+<?php require('../model/adminform.php'); ?>
 <main>
      <section>
             <div class="signup_container">
@@ -12,14 +12,15 @@
 
                            <div class="rows_two">
                                 <form action="post">
+
                                       <div class="form_container w-75">
                                            <div class="signup_title">
                                                   <h1>Signup Form</h1>
                                            </div>
 
                                            <div class="signup_form">
-                                                 <form method="post">
-                                                       <div class="form_cols mt-4">
+                                                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
+                                                       <div class="form_cols mt-4 form-group">
                                                              <div class="first_name">
                                                                   <label for="firstname">First Name: </label>
                                                                   <input type="text" name="first_name" class="w-100 px-2 py-1 rounded"/>
@@ -51,15 +52,15 @@
 
                                                               <div class="agent_landlord">
                                                                    <label for="landlord">Landlord Or Real Estate Agent</label>
-                                                                   <select class="w-100 px-2 py-1 rounded">
+                                                                   <select class="w-100 px-2 py-1 rounded" name="agent_category">
                                                                           <option selected>Landlord</option>
-                                                                          <option>Real Estate</option>
+                                                                          <option>Real Estate Agent</option>
                                                                    </select>
                                                               </div>
 
                                                               <div class="address">
                                                                    <label for="address">Address: </label>
-                                                                   <input type="text" name="addres" class="w-100 rounded px-2 py-1"/>
+                                                                   <textarea type="text" name="addres" class="w-100 rounded px-2 py-1"></textarea>
                                                               </div>
 
                                                               <div class="form_submit">
@@ -78,3 +79,32 @@
 
 </main>
 
+<?php
+
+ if(($_SERVER['REQUEST_METHOD']) =="post"):
+
+        $signup_form = new Adminform($database);
+
+        $firstname =  $_POST['first_name'];
+        $lastname = $_POST['last_name'];
+        $password = $_POST['password'];
+        $confirm_password = $_POST['confirm_password'];
+        $email = $_POST['email'];
+        $nubmer = $_POST['number'];
+        $agent_category = $_POST['agent_category'];
+        $address = $_POST['address'];
+
+
+   if($password == $confirm_password):
+
+      $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+      $signup_form->singupForm($firstname, $lastname, $hashed_password, $confirm_password, $email, $nubmer, $agent_category, $address);
+
+     else:
+        echo "<p class=''>Password not matching</p>";
+   endif;
+
+endif;
+
+
+?>

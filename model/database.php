@@ -1,32 +1,27 @@
 <?php
 
-
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', "root");
-define('DB_PASSWORD', '');
-define('DB_DATABASE', 'estary_real_state');
-
 class Database{
 
+  private $server = "localhost";
+  private $username = "root";
+  private $password = "";
+  private $databse = "estary_real_state";
+
+  private $connection;
 
     public function connection()
       {
 
 
-        $mysqli  = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+        $this->connection  = new mysqli($this->server, $this->username, $this->password, $this->databse);
 
-        if($mysqli->connect_error){
+        if(mysqli_error($this->connection)):
 
             echo "Connection Error";
-        }
+
+        endif;
     }
-
-     public function Agentinsertdata(){
-
-     }
 
 }
 
-$connection = new Database();
-$connection->connection();
 
