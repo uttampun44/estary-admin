@@ -33,8 +33,11 @@ class Adminform{
 
             if($stmt_insert_user->execute()):
                   echo "<div class='px-2 py-3'> <p class= 'text-success'>Register Sucessfully</p> </div>";
+
             else:
                 echo "<div class='px-2 py-3'><p class='text-danger'>Register Unsuccessfull</p></div>";
+
+                  header("location : ../view/login.php");
             endif;
         }
     }
