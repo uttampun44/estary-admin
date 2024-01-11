@@ -1,6 +1,6 @@
 <?php include_once('../inc/header.php'); ?>
 
-<?php require('../model/adminform.php'); ?>
+
 <main>
      <section>
             <div class="signup_container">
@@ -19,7 +19,7 @@
                                            </div>
 
                                            <div class="signup_form">
-                                                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
+                                                 <form method="post" action="" >
                                                        <div class="form_cols mt-4 form-group">
                                                              <div class="first_name">
                                                                   <label for="firstname">First Name: </label>
@@ -60,7 +60,7 @@
 
                                                               <div class="address">
                                                                    <label for="address">Address: </label>
-                                                                   <textarea type="text" name="addres" class="w-100 rounded px-2 py-1"></textarea>
+                                                                   <textarea type="text" name="address" class="w-100 rounded px-2 py-1"></textarea>
                                                               </div>
 
                                                               <div class="form_submit">
@@ -81,7 +81,7 @@
 
 <?php
 
- if(($_SERVER['REQUEST_METHOD']) =="post"):
+ if(($_SERVER['REQUEST_METHOD']) == "POST"):
 
         $signup_form = new Adminform($database);
 
@@ -90,20 +90,19 @@
         $password = $_POST['password'];
         $confirm_password = $_POST['confirm_password'];
         $email = $_POST['email'];
-        $nubmer = $_POST['number'];
+        $number = $_POST['number'];
         $agent_category = $_POST['agent_category'];
         $address = $_POST['address'];
 
 
-   if($password == $confirm_password):
+   if($password === $confirm_password):
 
       $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-      $signup_form->singupForm($firstname, $lastname, $hashed_password, $confirm_password, $email, $nubmer, $agent_category, $address);
+      $signup_form->singupForm($firstname, $lastname, $hashed_password, $confirm_password, $email, $number, $agent_category, $address);
 
      else:
         echo "<p class=''>Password not matching</p>";
    endif;
-
 endif;
 
 
