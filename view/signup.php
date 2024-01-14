@@ -1,6 +1,6 @@
 <?php include_once('../inc/header.php'); ?>
 
-<?php require('../model/adminform.php'); ?>
+
 <main>
      <section>
             <div class="signup_container">
@@ -17,7 +17,7 @@
                                            </div>
 
                                            <div class="signup_form">
-                                                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
+                                                 <form method="post" action="" >
                                                        <div class="form_cols mt-4 form-group">
                                                              <div class="first_name">
                                                                   <label for="firstname">First Name: </label>
@@ -87,7 +87,7 @@
         $password = $_POST['password'];
         $confirm_password = $_POST['confirm_password'];
         $email = $_POST['email'];
-        $nubmer = $_POST['number'];
+        $number = $_POST['number'];
         $agent_category = $_POST['agent_category'];
         $address = $_POST['address'];
 
@@ -98,5 +98,4 @@
      }else{
         echo "<p class=''>Password not matching</p>";
    }
-
  }

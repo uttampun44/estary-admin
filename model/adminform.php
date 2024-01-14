@@ -18,7 +18,8 @@ class Adminform{
 
     public function signupForm($firstname, $lastname, $hashed_password, $confirm_password, $email, $nubmer, $agent_category, $address){
 
-        $check_user = "SELECT * FROM `estary_agent` WHERE first_name = ?";
+        $check_user = "SELECT *FROM estary_agent WHERE first_name = ?";
+  
         $stmt_check_user = $this->database->prepare($check_user);
         $stmt_check_user->bind_param('s', $firstname);
         $stmt_check_user->execute();
@@ -29,11 +30,15 @@ class Adminform{
         }else{
             $insert_query = "INSERT INTO `estary_agent`(`first_name`, `last_name`, `password`, `confirm_password`, `email`, `phone_number`, `agent_category`, `address`)VALUES(?,?,?,?,?,?,?,?, Now())";
             $stmt_insert_user = $this->database->prepare($insert_query);
-            $stmt_insert_user->bind_param('ssssssss', $firstname, $lastname, $hashed_password, $confirm_password, $email, $nubmer, $agent_category, $address);
+            $stmt_insert_user->bind_param('ssssssss', $firstname, $lastname, $hashed_password, $confirm_password, $email, $number, $agent_category, $address);
 
             if(!$stmt_insert_user->execute()){
                 echo "Error: " . $stmt_insert_user->error;
                   echo "<div class='px-2 py-3'> <p class= 'text-success'>Register Sucessfully</p> </div>";
+
+            else:
+                echo "<div class='px-2 py-3'><p class='text-danger'>Register Unsuccessfull</p></div>";
+
                   header("location : ../view/login.php");
                   ?>
                       <script>
