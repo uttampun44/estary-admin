@@ -11,8 +11,6 @@
                             </div>
 
                            <div class="rows_two">
-                                <form action="post">
-
                                       <div class="form_container w-75">
                                            <div class="signup_title">
                                                   <h1>Signup Form</h1>
@@ -70,7 +68,6 @@
                                                  </form>
                                            </div>
                                      </div>
-                                </form>
                            </div>
                       </div>
                  </div>
@@ -81,9 +78,9 @@
 
 <?php
 
- if(($_SERVER['REQUEST_METHOD']) == "POST"):
+ if(($_SERVER['REQUEST_METHOD']) == "POST"){
 
-        $signup_form = new Adminform($database);
+     //    $signup_form = new Adminform($database);
 
         $firstname =  $_POST['first_name'];
         $lastname = $_POST['last_name'];
@@ -94,16 +91,11 @@
         $agent_category = $_POST['agent_category'];
         $address = $_POST['address'];
 
+   if($password == $confirm_password){
 
-   if($password === $confirm_password):
-
-      $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-      $signup_form->singupForm($firstname, $lastname, $hashed_password, $confirm_password, $email, $number, $agent_category, $address);
-
-     else:
+      $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+      $signup_form->signupForm($firstname, $lastname, $hashed_password, $confirm_password, $email, $nubmer, $agent_category, $address);
+     }else{
         echo "<p class=''>Password not matching</p>";
-   endif;
-endif;
-
-
-?>
+   }
+ }
