@@ -16,7 +16,7 @@ class Adminform{
        $this->date = date('Y-m-d H:i:s');
     }
 
-    public function signupForm($firstname, $lastname, $hashed_password, $confirm_password, $email, $nubmer, $agent_category, $address){
+    public function signupForm($firstname, $lastname, $hashed_password, $confirm_password, $email, $number, $agent_category, $address){
 
         $check_user = "SELECT *FROM estary_agent WHERE first_name = ?";
   
@@ -36,7 +36,6 @@ class Adminform{
                 echo "Error: " . $stmt_insert_user->error;
                   echo "<div class='px-2 py-3'> <p class= 'text-success'>Register Sucessfully</p> </div>";
 
-            else:
                 echo "<div class='px-2 py-3'><p class='text-danger'>Register Unsuccessfull</p></div>";
 
                   header("location : ../view/login.php");
